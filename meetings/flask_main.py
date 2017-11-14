@@ -82,6 +82,11 @@ def getevents():
     end = flask.session['end_date']
     begin = flask.session["begin_date"]
     calendars = request.form.getlist('list[]')
+    add_to_event_list(event_list, calendars, begin, end)
+    return flask.jsonify(result=event_list)
+
+
+def add_to_event_list(event_list, calendars, begin, end):
     service = get_gcal_service(valid_credentials())
     for calen in calendars:
         try:
@@ -94,7 +99,7 @@ def getevents():
                 event_list.append(event['summary'])
         except:
             app.logger.debug('had a bad request')
-    return flask.jsonify(result=event_list)
+
 
 
 ####
