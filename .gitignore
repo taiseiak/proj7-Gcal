@@ -1,6 +1,6 @@
 # Local
 secrets/*
-client_secret.json
+meetings/client_secret.json
 CONFIG.py
 node_modules
 static/js/*.min.js
